@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import NavBar from '../../components/navBar/NavBar'
 import About from '../../containers/pages/public/About'
 import Home from '../../containers/pages/public/Home'
 import Private from '../../containers/pages/private/Private'
@@ -12,7 +11,6 @@ const AppRouter = () => {
     return (
         <div>
             <Router>
-                <NavBar />
                 <Switch>
                     <PrivateRouter path='/private' isLogin={isLogin} component={Private} />
                     <Route path='/about' component={About} />

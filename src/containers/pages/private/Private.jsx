@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import NavBar from '../../../components/navBar/NavBar'
 
 
 const Private = () => {
@@ -7,6 +8,7 @@ const Private = () => {
 
     return (
         <div>
+            <NavBar />
             <h1>Vista Privada</h1>
             <p>{userData.name}</p>
             <img src={userData.avatar} alt="Avatar" />
