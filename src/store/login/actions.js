@@ -5,6 +5,7 @@ import "firebase/compat/auth";
 const providerFacebook = new firebase.auth.FacebookAuthProvider();
 const providerGoogle = new firebase.auth.GoogleAuthProvider();
 
+// Login con facebook
 export function signInWithPopupFacebook(cb) {
 
     return (dispatch) => {
@@ -54,6 +55,7 @@ export function signInWithPopupFacebook(cb) {
     }
 }
 
+// Login con Google
 export function signInWithPopupGoogle(cb) {
 
     return (dispatch) => {
@@ -99,6 +101,56 @@ export function signInWithPopupGoogle(cb) {
 
                 // ...
             });
-        // [END auth_facebook_signin_popup]
+        // [END auth_google_signin_popup]
     }
 }
+
+// Login con email y password
+export function signInWithEmailAndPassword({email, password},cb) {
+    //console.log(email, password)
+
+    return (dispatch) => {
+        dispatch({ type: LOGIN_USER_INIT })
+
+        const loginSuccess = (user) => {
+            dispatch({ type: LOGIN_USER_SUCCESS, payload: user })
+        }
+
+        const loginFail = (error) => {
+            dispatch({ type: LOGIN_USER_ERROR, payload: error })
+        }
+
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                console.log(cb)
+                // Signed in
+                const user = userCredential.user; 
+                const userLogin = { name: user.email, avatar: 'https://www.pngkey.com/png/detail/69-694700_profile-nuevo-usuario-icono.png' }
+                localStorage.data = user.uid
+                loginSuccess(userLogin)
+                cb()
+                // ...
+            })
+            .catch((error) => {
+                console.log(error)
+                const errorCode = error.code;
+                loginFail(errorCode)
+                //const errorMessage = error.message;
+            });
+    }
+}
+
+// LogOut
+export function logOut() {
+
+    firebase.auth().signOut().then(() => {
+        // Sign-out successful.
+        localStorage.data = ''
+    }).catch((error) => {
+        // An error happened.
+    });
+}
+
+
