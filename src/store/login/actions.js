@@ -1,4 +1,4 @@
-import { LOGIN_USER_INIT, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR } from './types'
+import { LOGIN_USER_INIT, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR, LOGOUT_USER_INIT, LOGOUT_USER_SUCCESS, LOGOUT_USER_ERROR } from './types'
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 
@@ -106,7 +106,7 @@ export function signInWithPopupGoogle(cb) {
 }
 
 // Login con email y password
-export function signInWithEmailAndPassword({email, password},cb) {
+export function signInWithEmailAndPassword({ email, password }, cb) {
     //console.log(email, password)
 
     return (dispatch) => {
@@ -124,9 +124,9 @@ export function signInWithEmailAndPassword({email, password},cb) {
             .auth()
             .signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
-                console.log(cb)
+                //console.log(cb)
                 // Signed in
-                const user = userCredential.user; 
+                const user = userCredential.user;
                 const userLogin = { name: user.email, avatar: 'https://www.pngkey.com/png/detail/69-694700_profile-nuevo-usuario-icono.png' }
                 localStorage.data = user.uid
                 loginSuccess(userLogin)
@@ -143,14 +143,29 @@ export function signInWithEmailAndPassword({email, password},cb) {
 }
 
 // LogOut
-export function logOut() {
+export function logOut(cbL) {
 
-    firebase.auth().signOut().then(() => {
-        // Sign-out successful.
-        localStorage.data = ''
-    }).catch((error) => {
-        // An error happened.
-    });
+    return (dispatch) => {
+        dispatch({ type: LOGOUT_USER_INIT })
+
+        const logoutSuccess = (user) => {
+            dispatch({ type: LOGOUT_USER_SUCCESS, payload: user })
+        }
+
+        const logoutFail = (error) => {
+            dispatch({ type: LOGOUT_USER_ERROR, payload: error })
+        }
+
+        firebase.auth().signOut().then(() => {
+            // Sign-out successful.
+            localStorage.clear()
+            logoutSuccess()
+            cbL()
+        }).catch((error) => {
+            // An error happened.
+            logoutFail(error)
+        });
+    }
 }
 
 

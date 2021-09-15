@@ -36,7 +36,7 @@ const Home = () => {
             event.preventDefault();
             dispatch(signInWithEmailAndPassword(form, cb));
         },
-        [dispatch, form,cb]
+        [dispatch, form, cb]
     );
 
     return (
