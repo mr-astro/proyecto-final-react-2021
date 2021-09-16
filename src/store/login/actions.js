@@ -1,4 +1,11 @@
-import { LOGIN_USER_INIT, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR, LOGOUT_USER_INIT, LOGOUT_USER_SUCCESS, LOGOUT_USER_ERROR } from './types'
+import {
+    LOGIN_USER_INIT,
+    LOGIN_USER_SUCCESS,
+    LOGIN_USER_ERROR,
+    LOGOUT_USER_INIT,
+    LOGOUT_USER_SUCCESS,
+    LOGOUT_USER_ERROR
+} from './types'
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 

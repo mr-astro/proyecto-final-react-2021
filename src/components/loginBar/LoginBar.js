@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { logOut } from '../../store/login/actions'
@@ -13,12 +13,9 @@ export default function LoginBar() {
         history.push('/')
     }
 
-    const handleOnClick = useCallback(
-        (event) => {
+    const handleOnClick = (event) => {
             dispatch(logOut(cbL));
-        },
-        [dispatch, cbL]
-    );
+        }
 
 
     return (

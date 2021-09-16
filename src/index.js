@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import 'bootstrap/dist/css/bootstrap.css'
 import { Provider } from 'react-redux'
 import firebase from 'firebase/compat/app'
 import store from './store'
+import App from './App';
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.css'
 
 firebase.initializeApp({
   apiKey: "AIzaSyBP_zmMwEOupMf97YadUxx_lG68tL6w4R0",
