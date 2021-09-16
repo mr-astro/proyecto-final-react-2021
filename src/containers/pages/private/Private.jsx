@@ -7,7 +7,7 @@ const Private = () => {
     
 
     return (
-        <div>
+        <div className='row'>
             <NavBar />
             <LoginBar />
             <h1>Vista Privada</h1>

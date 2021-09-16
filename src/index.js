@@ -4,17 +4,11 @@ import { Provider } from 'react-redux'
 import firebase from 'firebase/compat/app'
 import store from './store'
 import App from './App';
+import firebaseConfig from './.firebase';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css'
 
-firebase.initializeApp({
-  apiKey: "AIzaSyBP_zmMwEOupMf97YadUxx_lG68tL6w4R0",
-  authDomain: "proyecto-final-react-2021.firebaseapp.com",
-  projectId: "proyecto-final-react-2021",
-  storageBucket: "proyecto-final-react-2021.appspot.com",
-  messagingSenderId: "233683039099",
-  appId: "1:233683039099:web:c8b00513643ed939fa03de"
-})
+firebase.initializeApp(firebaseConfig)
 
 ReactDOM.render(
   <React.StrictMode>

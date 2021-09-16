@@ -144,6 +144,7 @@ export function signInWithEmailAndPassword({ email, password }, cb) {
                 console.log(error)
                 const errorCode = error.code;
                 loginFail(errorCode)
+                alert(errorCode)
                 //const errorMessage = error.message;
             });
     }

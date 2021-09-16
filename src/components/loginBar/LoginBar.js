@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { logOut } from '../../store/login/actions'
+import './LoginBar.css'
 
 
 export default function LoginBar() {
@@ -13,16 +14,16 @@ export default function LoginBar() {
         history.push('/')
     }
 
-    const handleOnClick = (event) => {
+    const handleOnClick = () => {
             dispatch(logOut(cbL));
         }
 
 
     return (
-        <div className='container'>
-            <p>Bienvenido {userData.name}</p>
-            <img src={userData.avatar} alt="Avatar" />
-            <button className='btn btn-danger' onClick={handleOnClick} >Logout</button>
+        <div className='LoginBar col-12 col-md-6'>
+            <h4>Bienvenido {userData.name}</h4>
+            <img className='avatar px-3' src={userData.avatar} alt="Avatar" />
+            <button className='btn btn-danger' onClick={handleOnClick} >Salir</button>
         </div>
     )
 }
