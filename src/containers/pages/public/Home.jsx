@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { signInWithPopupFacebook, signInWithPopupGoogle, signInWithEmailAndPassword } from '../../../store/login/actions'
 import ModalForm from '../../../components/modalForm/ModalForm'
-import { Modal, Button } from 'react-bootstrap'
 import './Home.css'
 
 const Home = () => {
@@ -11,12 +10,18 @@ const Home = () => {
         email: '',
         password: '',
     })
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
+    const [isOpenModal, setIsOpenModal] = useState(false)
     const history = useHistory()
     const dispatch = useDispatch()
+
+    const openModal = ()=> {
+        setIsOpenModal(true)
+    }
+
+    const closeModal = ()=> {
+        setIsOpenModal(false)
+    }
 
     const cb = () => {
         history.push('/private')
@@ -96,26 +101,16 @@ const Home = () => {
                             <div className="text-center text-lg-start mt-4 pt-2 mb-5">
                                 <button type="submit" className="btn btn-primary btn-lg" >Login</button>
                                 <p className="small fw-bold mt-2 pt-1 mb-0">¿No tienes cuenta? 
-                                    <a href="#!" className="" onClick={handleShow}>Registrate aquí</a>
+                                    <a href="#!" className="" onClick={openModal}>Registrate aquí</a>
                                 </p>
                             </div>
                         </form>
                     </div>
                 </div>
-                <Modal show={show} onHide={handleClose}>
-                    <Modal.Header>
-                        <Modal.Title>Formulario de Registro</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <ModalForm />
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
             </div>
+
+            { /* Modal */}
+            <ModalForm isOpen={isOpenModal} closeModal={closeModal}/>
 
             <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
                 {/* <!-- Copyright --> */}
