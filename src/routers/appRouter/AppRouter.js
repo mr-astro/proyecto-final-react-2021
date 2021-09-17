@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import About from '../../containers/pages/public/About'
-import Home from '../../containers/pages/public/Home'
-import Private from '../../containers/pages/private/Private'
+import Portada from '../../containers/pages/public/Portada'
+import Productos from '../../containers/pages/public/Productos'
+import Login from '../../containers/pages/public/Login'
+import Mantenedor from '../../containers/pages/private/Mantenedor'
 import PrivateRouter from '../privateRouter/PrivateRouter'
 
 const AppRouter = () => {
@@ -12,9 +13,10 @@ const AppRouter = () => {
         <div>
             <Router>
                 <Switch>
-                    <PrivateRouter path='/private' isLogin={isLogin} component={Private} />
-                    <Route path='/about' component={About} />
-                    <Route path='/' component={Home} />
+                    <PrivateRouter path='/mantenedor' isLogin={isLogin} component={Mantenedor} />
+                    <Route path='/productos' component={Productos} />
+                    <Route path='/login' component={Login} />
+                    <Route path='/' component={Portada} />
                     <Route path='*'><h1>404 Not Found</h1></Route>
                 </Switch>
             </Router>

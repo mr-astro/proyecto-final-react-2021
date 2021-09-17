@@ -9,21 +9,24 @@ export default function LoginBar() {
     const userData = useSelector((state) => state.data)
     const dispatch = useDispatch()
     const history = useHistory()
-    
+
     const cbL = () => {
         history.push('/')
     }
 
     const handleOnClick = () => {
-            dispatch(logOut(cbL));
-        }
+        dispatch(logOut(cbL));
+    }
 
 
     return (
-        <div className='LoginBar col-12 col-lg-6 container'>
-            <h4>Bienvenido {userData.name}</h4>
-            <img className='avatar px-3' src={userData.avatar} alt="Avatar" />
-            <button className='btn btn-danger' onClick={handleOnClick} >Salir</button>
+        <div className='bg-black'>
+            <div className='container LoginBar'>
+                <h4>Bienvenido :  <strong>{userData.name}</strong></h4>
+                <img className='avatar px-3' src={userData.avatar} alt="Avatar" />
+                <button className='btn btn-danger' onClick={handleOnClick} >Salir</button>
+            </div>
+
         </div>
     )
 }

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { signInWithPopupFacebook, signInWithPopupGoogle, signInWithEmailAndPassword } from '../../../store/login/actions'
 import ModalForm from '../../../components/modalForm/ModalForm'
-import './Home.css'
+import './Login.css'
 
 const Home = () => {
     const [form, setForm] = useState({
@@ -15,16 +15,16 @@ const Home = () => {
     const history = useHistory()
     const dispatch = useDispatch()
 
-    const openModal = ()=> {
+    const openModal = () => {
         setIsOpenModal(true)
     }
 
-    const closeModal = ()=> {
+    const closeModal = () => {
         setIsOpenModal(false)
     }
 
     const cb = () => {
-        history.push('/private')
+        history.push('/mantenedor')
     }
 
     const handleLoginFacebook = (event) => {
@@ -100,7 +100,7 @@ const Home = () => {
                             </div>
                             <div className="text-center text-lg-start mt-4 pt-2 mb-5">
                                 <button type="submit" className="btn btn-primary btn-lg" >Login</button>
-                                <p className="small fw-bold mt-2 pt-1 mb-0">¿No tienes cuenta? 
+                                <p className="small fw-bold mt-2 pt-1 mb-0">¿No tienes cuenta?
                                     <a href="#!" className="" onClick={openModal}>Registrate aquí</a>
                                 </p>
                             </div>
@@ -110,9 +110,9 @@ const Home = () => {
             </div>
 
             { /* Modal */}
-            <ModalForm isOpen={isOpenModal} closeModal={closeModal}/>
-
-            <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+            <ModalForm isOpen={isOpenModal} closeModal={closeModal} />
+            { /* Footer */}
+            <footer className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
                 {/* <!-- Copyright --> */}
                 <div className="text-white mb-3 mb-md-0">
                     Copyright © 2021. All rights reserved.
@@ -135,7 +135,7 @@ const Home = () => {
                     </a>
                 </div>
                 {/* <!-- Right --> */}
-            </div>
+            </footer>
         </section>
     )
 }

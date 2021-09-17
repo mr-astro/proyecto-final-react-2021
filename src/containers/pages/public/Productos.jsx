@@ -1,13 +1,14 @@
 import React from 'react'
-import LoginBar from '../../../components/loginBar/LoginBar'
 import NavBar from '../../../components/navBar/NavBar'
 
 const About = () => {
     return (
-        <div className='row'>
+        <div>
             <NavBar />
-            <LoginBar />
-            <h1>Vista About</h1>
+            <div className='container'>
+                <h1>Vista Productos</h1>
+                
+            </div>
         </div>
     )
 }

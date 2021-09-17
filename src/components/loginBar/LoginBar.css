@@ -1,7 +1,6 @@
 .LoginBar {
     height: 9vh;
     padding: 0 1rem 0 1rem;
-    background-color: black;
     color: white;
     display: flex;
     flex-direction: row;
@@ -21,7 +20,7 @@
 
 @media (min-width : 769px) {
     .LoginBar {
-        justify-content: start;
+        justify-content: end;
     }
 
     .LoginBar h4 {
