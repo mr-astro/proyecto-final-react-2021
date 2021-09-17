@@ -1,13 +1,35 @@
 .LoginBar {
+    height: 9vh;
+    padding: 0 1rem 0 1rem;
     background-color: black;
     color: white;
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
+
+}
+
+.LoginBar h4 {
+    display: none;
 }
 
 .avatar {
-    height: 5vh;
+    height: 7vh;
     border-radius: 50%;
 }
+
+@media (min-width : 769px) {
+    .LoginBar {
+        justify-content: start;
+    }
+
+    .LoginBar h4 {
+        display: contents;
+    }
+
+    .avatar {
+        height: 7vh;
+    }
+}
+

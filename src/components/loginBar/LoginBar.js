@@ -20,7 +20,7 @@ export default function LoginBar() {
 
 
     return (
-        <div className='LoginBar col-12 col-md-6'>
+        <div className='LoginBar col-12 col-lg-6 container'>
             <h4>Bienvenido {userData.name}</h4>
             <img className='avatar px-3' src={userData.avatar} alt="Avatar" />
             <button className='btn btn-danger' onClick={handleOnClick} >Salir</button>
