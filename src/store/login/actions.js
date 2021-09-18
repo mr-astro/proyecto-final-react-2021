@@ -6,11 +6,11 @@ import {
     LOGOUT_USER_SUCCESS,
     LOGOUT_USER_ERROR
 } from './types'
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
+import firebase from "firebase/compat/app"
+import "firebase/compat/auth"
 
-const providerFacebook = new firebase.auth.FacebookAuthProvider();
-const providerGoogle = new firebase.auth.GoogleAuthProvider();
+const providerFacebook = new firebase.auth.FacebookAuthProvider()
+const providerGoogle = new firebase.auth.GoogleAuthProvider()
 
 // Login con facebook
 export function signInWithPopupFacebook(cb) {
@@ -48,7 +48,7 @@ export function signInWithPopupFacebook(cb) {
             })
             .catch((error) => {
                 // Handle Errors here.
-                const errorCode = error.code;
+                const errorCode = error.code
                 loginFail(errorCode)
                 //const errorMessage = error.message;
                 // The email of the user's account used.
@@ -98,7 +98,7 @@ export function signInWithPopupGoogle(cb) {
             })
             .catch((error) => {
                 // Handle Errors here.
-                const errorCode = error.code;
+                const errorCode = error.code
                 loginFail(errorCode)
                 //const errorMessage = error.message;
                 // The email of the user's account used.
@@ -133,7 +133,7 @@ export function signInWithEmailAndPassword({ email, password }, cb) {
             .then((userCredential) => {
                 //console.log(cb)
                 // Signed in
-                const user = userCredential.user;
+                const user = userCredential.user
                 const userLogin = { name: user.email, avatar: 'https://www.pngkey.com/png/detail/69-694700_profile-nuevo-usuario-icono.png' }
                 localStorage.data = user.uid
                 loginSuccess(userLogin)

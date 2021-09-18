@@ -5,7 +5,7 @@ import './Portada.css'
 
 function Home() {
     const history = useHistory()
-    const cb = () => {
+    const cbP = () => {
         history.push('/login')
     }
     return (
@@ -18,7 +18,7 @@ function Home() {
                     <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mb-5">
                         <h1>Bienvenidos al Proyecto React</h1>
                         <p>Para ingresar debe accionar el boton de "INGRESAR"</p>
-                        <Button variant="danger" size="lg" onClick={cb}>INGRESAR</Button>
+                        <Button variant="danger" size="lg" onClick={cbP}>INGRESAR</Button>
                     </div>
                 </div>
             </div>

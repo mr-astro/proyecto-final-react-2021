@@ -6,7 +6,7 @@ import './LoginBar.css'
 
 
 export default function LoginBar() {
-    const userData = useSelector((state) => state.data)
+    const userData = useSelector((state) => state.login.data)
     const dispatch = useDispatch()
     const history = useHistory()
 

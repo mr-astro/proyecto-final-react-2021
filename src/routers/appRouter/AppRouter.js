@@ -7,7 +7,7 @@ import Mantenedor from '../../containers/pages/private/Mantenedor'
 import PrivateRouter from '../privateRouter/PrivateRouter'
 
 const AppRouter = () => {
-    const isLogin = useSelector(state => state.success)
+    const isLogin = useSelector(state => state.login.success)
     
     return (
         <div>
@@ -16,7 +16,7 @@ const AppRouter = () => {
                     <PrivateRouter path='/mantenedor' isLogin={isLogin} component={Mantenedor} />
                     <Route path='/productos' component={Productos} />
                     <Route path='/login' component={Login} />
-                    <Route path='/' component={Portada} />
+                    <Route exact path='/' component={Portada} />
                     <Route path='*'><h1>404 Not Found</h1></Route>
                 </Switch>
             </Router>

@@ -15,24 +15,13 @@ const Home = () => {
     const history = useHistory()
     const dispatch = useDispatch()
 
-    const openModal = () => {
-        setIsOpenModal(true)
-    }
+    const openModal = () => setIsOpenModal(true)
+    const closeModal = () => setIsOpenModal(false)
 
-    const closeModal = () => {
-        setIsOpenModal(false)
-    }
-
-    const cb = () => {
-        history.push('/mantenedor')
-    }
-
-    const handleLoginFacebook = (event) => {
-        dispatch(signInWithPopupFacebook(cb))
-    }
-    const handleLoginGoogle = (event) => {
-        dispatch(signInWithPopupGoogle(cb))
-    }
+    const cb = () => history.push('/mantenedor')
+    
+    const handleLoginFacebook = (event) => dispatch(signInWithPopupFacebook(cb))
+    const handleLoginGoogle = (event) => dispatch(signInWithPopupGoogle(cb))
 
     const handleInputChange = (event) => {
         const target = event.target
