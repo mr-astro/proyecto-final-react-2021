@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap'
 import firebase from "firebase/compat/app"
 import 'firebase/compat/firestore'
 
-function ModalFormCreateProduct({ isOpenCreateProduct, closeModalCreateProduct }) {
+function ModalFormCreateProduct({ isOpenModalCreate, closeModalCreate }) {
 
     const [form, setForm] = useState({
         id: '',
@@ -36,7 +36,7 @@ function ModalFormCreateProduct({ isOpenCreateProduct, closeModalCreateProduct }
 
 
     return (
-        <Modal show={isOpenCreateProduct} >
+        <Modal show={isOpenModalCreate} >
             <Modal.Header>
                 <Modal.Title>Formulario Creacion Producto</Modal.Title>
             </Modal.Header>
@@ -94,11 +94,11 @@ function ModalFormCreateProduct({ isOpenCreateProduct, closeModalCreateProduct }
                         <label className="form-label" htmlFor="stock">Stock del producto</label>
                     </div>
 
-                    <button type="submit" className="btn btn-primary btn-lg" onClick={closeModalCreateProduct} >Crear Producto</button>
+                    <button type="submit" className="btn btn-primary btn-lg" onClick={closeModalCreate} >Crear Producto</button>
                 </form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={closeModalCreateProduct}>
+                <Button variant="secondary" onClick={closeModalCreate}>
                     Close
                 </Button>
             </Modal.Footer>

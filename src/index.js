@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import firebase from 'firebase/compat/app'
@@ -10,10 +9,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 firebase.initializeApp(firebaseConfig)
 
 ReactDOM.render(
-  <React.StrictMode>
       <Provider store={store}>
         <App />
-      </Provider>
-  </React.StrictMode>,
+      </Provider>,
   document.getElementById('root')
 );

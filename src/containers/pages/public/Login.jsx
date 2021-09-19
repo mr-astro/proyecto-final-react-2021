@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import useModal from '../../../hooks/useModal'
 import { signInWithPopupFacebook, signInWithPopupGoogle, signInWithEmailAndPassword } from '../../../store/login/actions'
 import ModalFormCreateUser from '../../../components/modals/modalForm/ModalFormCreateUser'
 import './Login.css'
@@ -11,12 +12,12 @@ const Home = () => {
         password: '',
     })
 
-    const [isOpenModal, setIsOpenModal] = useState(false)
+    const [isOpenModal, openModal, closeModal] = useModal()
     const history = useHistory()
     const dispatch = useDispatch()
 
-    const openModal = () => setIsOpenModal(true)
-    const closeModal = () => setIsOpenModal(false)
+    // const openModal = () => setIsOpenModal(true)
+    // const closeModal = () => setIsOpenModal(false)
 
     const cb = () => history.push('/mantenedor')
 
@@ -98,7 +99,7 @@ const Home = () => {
             </div>
 
             { /* Modal */}
-            <ModalFormCreateUser isOpen={isOpenModal} closeModal={closeModal} />
+            <ModalFormCreateUser isOpenModal={isOpenModal} closeModal={closeModal} />
             { /* Footer */}
             <footer className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
                 {/* <!-- Copyright --> */}

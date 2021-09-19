@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Table, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import { getProducts } from '../../../store/products/actions'
 import LoginBar from '../../../components/loginBar/LoginBar'
 import NavBar from '../../../components/navBar/NavBar'
+import useModal from '../../../hooks/useModal'
 import ModalFormCreateProduct from '../../../components/modals/modalForm/ModalFormCreateProduct'
+import ModalDeleteProduct from '../../../components/modals/modalForm/ModalDeleteProduct'
 import './Mantenedor.css'
 
 
 const Private = () => {
     const products = useSelector((state) => state.products.data)
-    const [isOpenModalCreateProduct, setIsOpenModalCreateProduct] = useState(false)
-    const dispatch = useDispatch()
+    const [isOpenModalCreate, openModalCreate, closeModalCreate] = useModal()
+    const [isOpenModalDelete, openModalDelete, closeModalDelete] = useModal()
 
-    const openModalCreateProduct = () => setIsOpenModalCreateProduct(true)
-    const closeModalCreateProduct = () => setIsOpenModalCreateProduct(false)
+    const dispatch = useDispatch()
     
     useEffect(() => {
         dispatch(getProducts())
@@ -27,10 +27,11 @@ const Private = () => {
                 <NavBar />
                 <LoginBar />
             </div>
-            <ModalFormCreateProduct isOpenCreateProduct={isOpenModalCreateProduct} closeModalCreateProduct={closeModalCreateProduct}/>
+            <ModalFormCreateProduct isOpenModalCreate={isOpenModalCreate} closeModalCreate={closeModalCreate}/>
+            <ModalDeleteProduct isOpenModalDelete={isOpenModalDelete} closeModalDelete={closeModalDelete}/>
             <div className='container'>
                 <div className='py-5'>
-                    <Button variant="primary" size="lg" onClick={openModalCreateProduct}>Crear Producto</Button>
+                    <Button variant="primary" size="lg" onClick={openModalCreate}>Crear Producto</Button>
                 </div>
                 <Table striped bordered hover>
                     <thead>
@@ -51,8 +52,8 @@ const Private = () => {
                                     <td>{product.product.price}</td>
                                     <td>{product.product.stock}</td>
                                     <td>
-                                        <Link to={`/products/remove/${product.id}`} className='btn btn-danger mx-1'>Editar</Link>
-                                        <Link to={`/products/remove/${product.id}`} className='btn btn-danger mx-1'>Borrar</Link>
+                                        <Button className='mx-3' variant='danger' size='lg'>Editar</Button>
+                                        <Button variant='danger' size='lg' onClick={openModalDelete}>Borrar</Button>
                                     </td>
                                 </tr>
                             )

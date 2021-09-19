@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 
-function ModalFormCreateUser( {isOpen, closeModal }) {
+function ModalFormCreateUser( {isOpenModal, closeModal }) {
     const [form, setForm] = useState({
         email: '',
         password: '',
@@ -37,7 +37,7 @@ function ModalFormCreateUser( {isOpen, closeModal }) {
 
 
     return (
-        <Modal show={isOpen} >
+        <Modal show={isOpenModal} >
             <Modal.Header>
                 <Modal.Title>Formulario de Registro</Modal.Title>
             </Modal.Header>
