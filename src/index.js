@@ -5,7 +5,6 @@ import firebase from 'firebase/compat/app'
 import store from './store'
 import App from './App';
 import firebaseConfig from './.firebase';
-import './index.css';
 import 'bootstrap/dist/css/bootstrap.css'
 
 firebase.initializeApp(firebaseConfig)

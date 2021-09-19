@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { signInWithPopupFacebook, signInWithPopupGoogle, signInWithEmailAndPassword } from '../../../store/login/actions'
-import ModalForm from '../../../components/modalForm/ModalForm'
+import ModalFormCreateUser from '../../../components/modals/modalForm/ModalFormCreateUser'
 import './Login.css'
 
 const Home = () => {
@@ -19,9 +19,6 @@ const Home = () => {
     const closeModal = () => setIsOpenModal(false)
 
     const cb = () => history.push('/mantenedor')
-    
-    const handleLoginFacebook = (event) => dispatch(signInWithPopupFacebook(cb))
-    const handleLoginGoogle = (event) => dispatch(signInWithPopupGoogle(cb))
 
     const handleInputChange = (event) => {
         const target = event.target
@@ -31,6 +28,8 @@ const Home = () => {
         })
     }
 
+    const handleLoginFacebook = (event) => dispatch(signInWithPopupFacebook(cb))
+    const handleLoginGoogle = (event) => dispatch(signInWithPopupGoogle(cb))
     const handleSubmit =
         (event) => {
             event.preventDefault();
@@ -99,7 +98,7 @@ const Home = () => {
             </div>
 
             { /* Modal */}
-            <ModalForm isOpen={isOpenModal} closeModal={closeModal} />
+            <ModalFormCreateUser isOpen={isOpenModal} closeModal={closeModal} />
             { /* Footer */}
             <footer className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
                 {/* <!-- Copyright --> */}

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 
-function ModalForm( {isOpen, closeModal }) {
+function ModalFormCreateUser( {isOpen, closeModal }) {
     const [form, setForm] = useState({
         email: '',
         password: '',
@@ -81,4 +81,4 @@ function ModalForm( {isOpen, closeModal }) {
     )
 }
 
-export default ModalForm
+export default ModalFormCreateUser

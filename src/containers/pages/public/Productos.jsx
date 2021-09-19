@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link} from 'react-router-dom'
+import { Card } from 'react-bootstrap'
 import { getProducts } from '../../../store/products/actions'
 import NavBar from '../../../components/navBar/NavBar'
 
@@ -16,17 +16,22 @@ const About = () => {
         <div>
             <NavBar />
             <h1>Vista Productos</h1>
-            {products.map((product) => {
-                return (
-                    <div className='list-group-item' key={product.id}>
-                        <div className='row'>
-                            <div className='col-4'>{product.product.title}</div>
-                            <div className='col-4'>{product.product.price}</div>
-                            <div className='col-4'><Link to={`/products/remove/${product.id}`} className='btn btn-danger'>Delete</Link></div>
-                        </div>
-                    </div>
-                )
-            })}
+            <div className='container row'>
+                {products.map((product) => {
+                    return (
+                        <Card className='mx-3' style={{ width: '18rem' }}>
+                            <Card.Img variant="top" src={product.product.urlImg} />
+                            <Card.Body>
+                                <Card.Title>{product.product.title}</Card.Title>
+                                <Card.Text>
+                                    <h4>Precio: {product.product.price}</h4>
+                                    <h5>Stock: {product.product.stock}</h5>
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    )
+                })}
+            </div>
         </div>
     )
 }
