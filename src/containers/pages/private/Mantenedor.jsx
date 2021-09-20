@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Table, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import { getProducts } from '../../../store/products/actions'
 import LoginBar from '../../../components/loginBar/LoginBar'
 import NavBar from '../../../components/navBar/NavBar'
@@ -16,6 +17,11 @@ const Private = () => {
     const [isOpenModalDelete, openModalDelete, closeModalDelete] = useModal()
 
     const dispatch = useDispatch()
+
+    const prueba = () => {
+        openModalDelete()
+        
+    }
     
     useEffect(() => {
         dispatch(getProducts())
@@ -53,7 +59,7 @@ const Private = () => {
                                     <td>{product.product.stock}</td>
                                     <td>
                                         <Button className='mx-3' variant='danger' size='lg'>Editar</Button>
-                                        <Button variant='danger' size='lg' onClick={openModalDelete}>Borrar</Button>
+                                        <Button variant='danger' size='lg' onClick={prueba}>Borrar</Button>
                                     </td>
                                 </tr>
                             )

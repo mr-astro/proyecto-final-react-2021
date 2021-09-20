@@ -6,7 +6,6 @@ import 'firebase/compat/firestore'
 function ModalFormCreateProduct({ isOpenModalCreate, closeModalCreate }) {
 
     const [form, setForm] = useState({
-        id: '',
         title: '',
         urlImg: '',
         price: '',
