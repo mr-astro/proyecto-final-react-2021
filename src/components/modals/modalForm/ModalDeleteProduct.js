@@ -1,7 +1,22 @@
 import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
+import firebase from "firebase/compat/app"
+import 'firebase/compat/firestore'
 
-function ModalDeleteProduct({isOpenModalDelete, closeModalDelete }) {
+function ModalDeleteProduct({ isOpenModalDelete, closeModalDelete, idEliminar }) {
+
+    const deleteProduct = () => {
+        try {
+            firebase
+            .firestore()
+                .collection('data')
+                .doc(idEliminar)
+                .delete()
+            
+        } catch (error) {
+            
+        }
+    }
 
     return (
         <Modal show={isOpenModalDelete} >
@@ -9,10 +24,10 @@ function ModalDeleteProduct({isOpenModalDelete, closeModalDelete }) {
                 <Modal.Title>Eliminacion de Producto</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h2>Estas seguro de borrar el producto</h2>
+                <h2>Estas seguro de borrar el producto {idEliminar}</h2>
             </Modal.Body>
             <Modal.Footer>
-            <Button variant="secondary" >
+                <Button variant="secondary" onClick={deleteProduct()}>
                     Eliminar
                 </Button>
                 <Button variant="secondary" onClick={closeModalDelete}>
