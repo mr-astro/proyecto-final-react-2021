@@ -1,9 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { Modal, Button } from 'react-bootstrap'
 import firebase from "firebase/compat/app"
-import 'firebase/compat/firestore'
+import 'firebase/firestore'
 
 function ModalFormUpdateProduct({ isOpenModalUpdate, closeModalUpdate, idUpdate }) {
+    const products = useSelector((state) => state.products.data)
+    const data = products.find(f => f.id === idUpdate)
+    //console.log(data)
+    const handlerUpdateProduct = () => {
+        handleSubmit()
+        closeModalUpdate()
+    }
 
     const [form, setForm] = useState({
         title: '',
@@ -12,12 +20,18 @@ function ModalFormUpdateProduct({ isOpenModalUpdate, closeModalUpdate, idUpdate 
         stock: 0
     })
 
-    //console.log(products)
-
-    const handlerUpdateProduct = () => {
-        handleSubmit()
-        closeModalUpdate()
-    }
+    useEffect(() => {
+        if (data) {
+            setForm(
+                {
+                    title: `${data.product.title}`,
+                    urlImg: `${data.product.urlImg}`,
+                    price: `${data.product.price}`,
+                    stock: `${data.product.stock}`
+                }
+            )
+        }
+    }, [data])
 
     const handleInputChange = (event) => {
         const target = event.target
@@ -27,16 +41,17 @@ function ModalFormUpdateProduct({ isOpenModalUpdate, closeModalUpdate, idUpdate 
         })
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
         try {
             firebase
-            .firestore()
+                .firestore()
                 .collection('data')
-                .doc(idUpdate)
+                .doc({idUpdate})
                 .update(form)
-            
+            alert(idUpdate)
+
         } catch (error) {
-            
+            alert(error)
         }
     }
     return (

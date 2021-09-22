@@ -36,7 +36,6 @@ export function getProducts() {
             });
         } catch (error) {
             loginFail(error)
-            console.log(error)
         }       
     }
 }

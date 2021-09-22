@@ -8,6 +8,7 @@ import PrivateRouter from '../privateRouter/PrivateRouter'
 
 const AppRouter = () => {
     const isLogin = useSelector(state => state.login.success)
+    //console.log(isLogin)
     
     return (
         <div>

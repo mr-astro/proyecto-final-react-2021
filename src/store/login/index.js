@@ -50,7 +50,7 @@ export const loginReducer = (prevState = initialStore, action) => {
                 ...prevState,
                 data: {},
                 loading: false,
-                success: true,
+                success: false,
                 error: false
             }
 

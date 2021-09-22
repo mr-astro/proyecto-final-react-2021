@@ -5,8 +5,12 @@ import './Portada.css'
 
 function Home() {
     const history = useHistory()
-    const cbP = () => {
+    const cbL = () => {
         history.push('/login')
+    }
+
+    const cbP = () => {
+        history.push('/productos')
     }
     return (
         <section className="vh-100">
@@ -17,8 +21,10 @@ function Home() {
                     </div>
                     <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mb-5">
                         <h1>Bienvenidos al Proyecto React</h1>
-                        <p>Para ingresar debe accionar el boton de "INGRESAR"</p>
-                        <Button variant="danger" size="lg" onClick={cbP}>INGRESAR</Button>
+                        <p>Para ingresar al mantenedor debes accionar el boton de "INGRESAR"</p>
+                        <p>Para ver los PRODUCTOS debes accionar el boton de "PRODUCTOS"</p>
+                        <Button variant="danger" size="lg" onClick={cbL} className='mx-3'>INGRESAR</Button>
+                        <Button variant="primary" size="lg" onClick={cbP}>Productos</Button>
                     </div>
                 </div>
             </div>

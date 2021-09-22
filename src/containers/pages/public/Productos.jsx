@@ -19,14 +19,12 @@ const About = () => {
             <div className='container row'>
                 {products.map((product) => {
                     return (
-                        <Card className='m-3' style={{ width: '18rem' }}>
+                        <Card className='m-3' style={{ width: '18rem' }} key={product.id}>
                             <Card.Img variant="top" src={product.product.urlImg} />
                             <Card.Body>
                                 <Card.Title>{product.product.title}</Card.Title>
-                                <Card.Text>
-                                    <h4>Precio: {product.product.price}</h4>
-                                    <h5>Stock: {product.product.stock}</h5>
-                                </Card.Text>
+                                <Card.Subtitle>Precio: ${product.product.price}</Card.Subtitle>
+                                <Card.Text>Stock: {product.product.stock}</Card.Text>
                             </Card.Body>
                         </Card>
                     )
