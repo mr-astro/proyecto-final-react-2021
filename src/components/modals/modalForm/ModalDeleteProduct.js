@@ -29,7 +29,7 @@ function ModalDeleteProduct({ isOpenModalDelete, closeModalDelete, idEliminar })
                 <Modal.Title>Eliminacion de Producto</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h2>Estas seguro de borrar el producto {idEliminar}</h2>
+                <h2>¿Estas seguro de borrar el producto seleccionado?</h2>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handlerDeleteProduct}>

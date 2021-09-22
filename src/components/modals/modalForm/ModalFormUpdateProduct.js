@@ -2,22 +2,18 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Modal, Button } from 'react-bootstrap'
 import firebase from "firebase/compat/app"
-import 'firebase/firestore'
+import 'firebase/compat/firestore'
 
 function ModalFormUpdateProduct({ isOpenModalUpdate, closeModalUpdate, idUpdate }) {
     const products = useSelector((state) => state.products.data)
     const data = products.find(f => f.id === idUpdate)
     //console.log(data)
-    const handlerUpdateProduct = () => {
-        handleSubmit()
-        closeModalUpdate()
-    }
 
     const [form, setForm] = useState({
         title: '',
         urlImg: '',
-        price: 0,
-        stock: 0
+        price: '',
+        stock: ''
     })
 
     useEffect(() => {
@@ -42,13 +38,14 @@ function ModalFormUpdateProduct({ isOpenModalUpdate, closeModalUpdate, idUpdate 
     }
 
     const handleSubmit = (event) => {
+        event.preventDefault()
         try {
             firebase
                 .firestore()
                 .collection('data')
-                .doc({idUpdate})
+                .doc(idUpdate)
                 .update(form)
-            alert(idUpdate)
+            alert('Producto Modificado')
 
         } catch (error) {
             alert(error)
@@ -60,7 +57,7 @@ function ModalFormUpdateProduct({ isOpenModalUpdate, closeModalUpdate, idUpdate 
                 <Modal.Title>Formulario Edicion Producto</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <form onSubmit={handlerUpdateProduct}>
+                <form onSubmit={handleSubmit}>
                     {/* <!-- urlImg input --> */}
                     <div className="form-outline mb-4">
                         <input
