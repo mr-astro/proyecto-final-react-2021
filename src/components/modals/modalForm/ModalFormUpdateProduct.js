@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap'
 import firebase from "firebase/compat/app"
 import 'firebase/compat/firestore'
 
-function ModalFormCreateProduct({ isOpenModalCreate, closeModalCreate }) {
+function ModalFormUpdateProduct({ isOpenModalUpdate, closeModalUpdate, idUpdate }) {
 
     const [form, setForm] = useState({
         title: '',
@@ -11,6 +11,13 @@ function ModalFormCreateProduct({ isOpenModalCreate, closeModalCreate }) {
         price: 0,
         stock: 0
     })
+
+    //console.log(products)
+
+    const handlerUpdateProduct = () => {
+        handleSubmit()
+        closeModalUpdate()
+    }
 
     const handleInputChange = (event) => {
         const target = event.target
@@ -20,27 +27,25 @@ function ModalFormCreateProduct({ isOpenModalCreate, closeModalCreate }) {
         })
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
+    const handleSubmit = () => {
         try {
             firebase
-                .firestore()
+            .firestore()
                 .collection('data')
-                .add(form);
-            alert('Producto Creado')
+                .doc(idUpdate)
+                .update(form)
+            
         } catch (error) {
-            alert(error)
+            
         }
     }
-
-
     return (
-        <Modal show={isOpenModalCreate} >
+        <Modal show={isOpenModalUpdate} >
             <Modal.Header>
-                <Modal.Title>Formulario Creacion Producto</Modal.Title>
+                <Modal.Title>Formulario Edicion Producto</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handlerUpdateProduct}>
                     {/* <!-- urlImg input --> */}
                     <div className="form-outline mb-4">
                         <input
@@ -95,11 +100,11 @@ function ModalFormCreateProduct({ isOpenModalCreate, closeModalCreate }) {
                         <label className="form-label" htmlFor="stock">Stock del producto</label>
                     </div>
 
-                    <button type="submit" className="btn btn-primary btn-lg" onClick={closeModalCreate} >Crear Producto</button>
+                    <button type="submit" className="btn btn-primary btn-lg" onClick={closeModalUpdate} >Editar Producto</button>
                 </form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={closeModalCreate}>
+                <Button variant="secondary" onClick={closeModalUpdate}>
                     Close
                 </Button>
             </Modal.Footer>
@@ -107,4 +112,4 @@ function ModalFormCreateProduct({ isOpenModalCreate, closeModalCreate }) {
     )
 }
 
-export default ModalFormCreateProduct
+export default ModalFormUpdateProduct

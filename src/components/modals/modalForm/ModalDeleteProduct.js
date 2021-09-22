@@ -5,6 +5,11 @@ import 'firebase/compat/firestore'
 
 function ModalDeleteProduct({ isOpenModalDelete, closeModalDelete, idEliminar }) {
 
+    const handlerDeleteProduct = () => {
+        deleteProduct()
+        closeModalDelete()
+    }
+
     const deleteProduct = () => {
         try {
             firebase
@@ -27,7 +32,7 @@ function ModalDeleteProduct({ isOpenModalDelete, closeModalDelete, idEliminar })
                 <h2>Estas seguro de borrar el producto {idEliminar}</h2>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={deleteProduct()}>
+                <Button variant="secondary" onClick={handlerDeleteProduct}>
                     Eliminar
                 </Button>
                 <Button variant="secondary" onClick={closeModalDelete}>

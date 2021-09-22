@@ -16,9 +16,6 @@ const Home = () => {
     const history = useHistory()
     const dispatch = useDispatch()
 
-    // const openModal = () => setIsOpenModal(true)
-    // const closeModal = () => setIsOpenModal(false)
-
     const cb = () => history.push('/mantenedor')
 
     const handleInputChange = (event) => {
