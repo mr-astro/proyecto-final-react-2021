@@ -31,7 +31,7 @@ const Private = () => {
         setIdUpdate(id)
         openModalUpdate()
     }
-    
+
     useEffect(() => {
         dispatch(getProducts())
     }, [dispatch])
@@ -42,9 +42,9 @@ const Private = () => {
                 <NavBar />
                 <LoginBar />
             </div>
-            <ModalFormCreateProduct isOpenModalCreate={isOpenModalCreate} closeModalCreate={closeModalCreate}/>
-            <ModalDeleteProduct isOpenModalDelete={isOpenModalDelete} closeModalDelete={closeModalDelete} idEliminar={idEliminar}/>
-            <ModalFormUpdateProduct isOpenModalUpdate={isOpenModalUpdate} closeModalUpdate={closeModalUpdate} idUpdate={idUpdate}/>
+            <ModalFormCreateProduct isOpenModalCreate={isOpenModalCreate} closeModalCreate={closeModalCreate} />
+            <ModalDeleteProduct isOpenModalDelete={isOpenModalDelete} closeModalDelete={closeModalDelete} idEliminar={idEliminar} />
+            <ModalFormUpdateProduct isOpenModalUpdate={isOpenModalUpdate} closeModalUpdate={closeModalUpdate} idUpdate={idUpdate} />
             <div className='container'>
                 <div className='py-5'>
                     <Button variant="primary" size="lg" onClick={openModalCreate}>Crear Producto</Button>
@@ -68,8 +68,10 @@ const Private = () => {
                                     <td>{product.product.price}</td>
                                     <td>{product.product.stock}</td>
                                     <td>
-                                        <Button className='mx-3' variant='danger' size='lg' onClick={e => hadleUpdateProduct(product.id)}>Editar</Button>
-                                        <Button variant='danger' size='lg' onClick={e => handleDeleteProduct(product.id)}>Borrar</Button>
+                                        <div className='buttons'>
+                                            <Button className='btn-edit' variant='danger' size='sm' onClick={e => hadleUpdateProduct(product.id)}>Editar</Button>
+                                            <Button className='btn-delete' variant='danger' size='sm' onClick={e => handleDeleteProduct(product.id)}>Borrar</Button>
+                                        </div>
                                     </td>
                                 </tr>
                             )
