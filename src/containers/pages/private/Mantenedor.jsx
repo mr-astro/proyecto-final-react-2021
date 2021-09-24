@@ -49,7 +49,7 @@ const Private = () => {
                 <div className='py-5'>
                     <Button variant="primary" size="lg" onClick={openModalCreate}>Crear Producto</Button>
                 </div>
-                <Table striped bordered hover>
+                <Table striped bordered hover responsive>
                     <thead>
                         <tr>
                             <th>Imagen</th>
